@@ -9,7 +9,7 @@ export default function PropertiesSection(): React.JSX.Element {
       <FeaturesMediaColumns
         title="Our Villas"
         items={[{"title":"Kayan Rodriguez ","description":"Co-Founder of Brand Konnect","imageSrc":"https://storage.googleapis.com/webild/users/user_3GMBzqNQha0Ss5sANYDh3wTgZ9J/uploaded-1783781452700-7sztti47.jpg"},{"description":"Co-Founder of Brand Konnect","imageSrc":"https://storage.googleapis.com/webild/users/user_3GMBzqNQha0Ss5sANYDh3wTgZ9J/uploaded-1783781664123-4zzxj0fq.jpg","title":"Ben Danko "}]}
-        description="Handpicked residences in Marbella's most coveted locations, each designed for effortless Mediterranean living."
+        description="Built by people who got tired of watching roofers get burned."
         tag="Properties"
         textAnimation="fade-blur"
       />
