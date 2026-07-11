@@ -7,11 +7,13 @@ export default function AboutSection(): React.JSX.Element {
   return (
     <div data-webild-section="about" data-section="about" id="about">
       <HeroBillboard
-        description="Elevating roofing businesses with strategic growth partnerships, tailored marketing, and operational excellence."
+        tag="About Us"
         title="We are growth partners for roofing contractors in the US."
-        primaryButton={{"text":"Book a Call","href":"#contact"}}
+        description="Elevating roofing businesses with strategic growth partnerships, tailored marketing, and operational excellence."
+        imageSrc=""
+        primaryButton={{ text: "Book a Call", href: "#contact" }}
+        secondaryButton={{ text: "Our Services", href: "#services" }}
         textAnimation="fade-blur"
-        secondaryButton={{"text":"Our Services","href":"#services"}}
       />
     </div>
   );
