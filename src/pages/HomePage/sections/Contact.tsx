@@ -121,7 +121,7 @@ const ContactInline = () => {
               {"Get In Touch"}
             </h2>
 
-            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+            <div data-tf-live="01KX915CE97K3B48N6EDGM9BFR" className="w-full h-[500px]"></div><form style={{display: 'none'}} onSubmit={handleSubmit} className="flex flex-col gap-4">
               <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                 {inputs.map((input) => (
                   <input
