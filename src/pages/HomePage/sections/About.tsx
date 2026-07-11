@@ -8,8 +8,9 @@ export default function AboutSection(): React.JSX.Element {
     <div data-webild-section="about" data-section="about" id="about">
       <HeroBillboard
         tag="A"
-        title="Everything before the handshake is ours. The handshake is yours."
-        description="No chasing, no cold leads. Just homeowners ready to talk, on your calendar."
+        title="
+Everything before the handshake is ours. The handshake is yours."
+        description="Elevating roofing business to next level."
         imageSrc=""
         primaryButton={{ text: "Book a Call", href: "#contact" }}
         secondaryButton={{ text: "Our Services", href: "#services" }}
