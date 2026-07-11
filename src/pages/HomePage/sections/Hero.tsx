@@ -15,7 +15,7 @@ export default function HeroSection(): React.JSX.Element {
                 description="Everything before the handshake is ours. The handshake is yours."
                 primaryButton={{ text: "View  Our Process", href: "#process" }}
                 secondaryButton={{ text: "See if You Qualify", href: "#contact" }}
-                bottomText="brand Konnect is designed for those seeking a unique and reliable way to acquire Quality Roofing Jobs"
+                bottomText="You pay when they show. Not before."
               />
             </div>
   );
