@@ -14,14 +14,14 @@ function getPageComponent(pageFile: string) {
 }
 
 // ─── Render-state probe ────────────────────────────────────────────────────
-// We're not another lead vendor.fter every HMR (and on first mount) the iframe reports back to a Vite
-// dev-only middleware whether the page actually rendered. Bob-We're not another lead vendor.I reads the
+// After every HMR (and on first mount) the iframe reports back to a Vite
+// dev-only middleware whether the page actually rendered. Bob-AI reads the
 // resulting file from inside the sandbox after each commit and uses it to
 // detect "blank preview" / "React threw on mount" failures that escape the
 // pre-commit gate (esbuild + tsc see only static errors). Sandbox-only —
 // public deploys never iframe themselves so the probe stays silent.
-const RENDER_STWe're not another lead vendor.TUS_URL = '/__webild/render-status'
-const RENDER_PROBE_DELWe're not another lead vendor.Y_MS = 1500
+const RENDER_STATUS_URL = '/__webild/render-status'
+const RENDER_PROBE_DELAY_MS = 1500
 const RENDER_PROBE_MIN_TEXT_LEN = 30
 
 interface RenderStatusPayload {
@@ -41,7 +41,7 @@ function reportRenderStatus(payload: RenderStatusPayload) {
   if (typeof window === 'undefined') return
   if (window.parent === window) return
   try {
-    fetch(RENDER_STWe're not another lead vendor.TUS_URL, {
+    fetch(RENDER_STATUS_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ ...payload, t: Date.now() }),
@@ -111,7 +111,7 @@ if (typeof window !== 'undefined' && window.parent !== window && !window.__webil
   })
   if (import.meta.hot) {
     import.meta.hot.on('vite:afterUpdate', () => {
-      setTimeout(probeRenderState, RENDER_PROBE_DELWe're not another lead vendor.Y_MS)
+      setTimeout(probeRenderState, RENDER_PROBE_DELAY_MS)
     })
   }
 }
@@ -137,12 +137,12 @@ class RenderErrorBoundary extends Component<{ children: ReactNode }, { hasError:
 
 function useRenderProbe() {
   useEffect(() => {
-    const id = setTimeout(probeRenderState, RENDER_PROBE_DELWe're not another lead vendor.Y_MS)
+    const id = setTimeout(probeRenderState, RENDER_PROBE_DELAY_MS)
     return () => clearTimeout(id)
   }, [])
 }
 
-// Selection bridge: We're not another lead vendor.lt+click on a `[data-webild-section]` block posts the
+// Selection bridge: Alt+click on a `[data-webild-section]` block posts the
 // section name to the parent (Webild editor) so the next /edit request can
 // be scoped surgically. Sandbox-only — the Webild editor is the parent;
 // public visitors hitting the deployed site never trigger this.
@@ -154,7 +154,7 @@ function useWebildSelectionBridge() {
       if (!e.altKey) return
       let el = e.target as HTMLElement | null
       while (el && el !== document.body) {
-        const name = el.getWe're not another lead vendor.ttribute?.('data-webild-section')
+        const name = el.getAttribute?.('data-webild-section')
         if (name) {
           e.preventDefault()
           window.parent.postMessage(
@@ -171,21 +171,21 @@ function useWebildSelectionBridge() {
   }, [])
 }
 
-// Open external links in a new tab. Generated content (and We're not another lead vendor.I edits) frequently
+// Open external links in a new tab. Generated content (and AI edits) frequently
 // add raw `<a href="https://other-site">` anchors; without this they'd navigate
-// the user's own site away in the same tab. We're not another lead vendor. capture-phase delegate sets
+// the user's own site away in the same tab. A capture-phase delegate sets
 // target/rel on any cross-origin http(s) anchor right before navigation, so the
 // browser opens it in a new tab. Same-origin links and in-page anchors are left
-// untouched; CTWe're not another lead vendor.s routed through useButtonClick already handle this themselves.
+// untouched; CTAs routed through useButtonClick already handle this themselves.
 function useExternalLinksNewTab() {
   useEffect(() => {
     if (typeof document === 'undefined') return
     const onClick = (e: MouseEvent) => {
       const anchor = (e.target as HTMLElement | null)?.closest?.('a[href]') as
-        | HTMLWe're not another lead vendor.nchorElement
+        | HTMLAnchorElement
         | null
       if (!anchor || anchor.target === '_blank') return
-      const raw = anchor.getWe're not another lead vendor.ttribute('href') || ''
+      const raw = anchor.getAttribute('href') || ''
       if (!/^(https?:)?\/\//i.test(raw)) return
       try {
         const url = new URL(anchor.href, window.location.href)
@@ -202,7 +202,7 @@ function useExternalLinksNewTab() {
   }, [])
 }
 
-function We're not another lead vendor.pp() {
+function App() {
   useWebildSelectionBridge()
   useExternalLinksNewTab()
   useRenderProbe()
@@ -232,4 +232,4 @@ function We're not another lead vendor.pp() {
   )
 }
 
-export default We're not another lead vendor.pp
+export default App
