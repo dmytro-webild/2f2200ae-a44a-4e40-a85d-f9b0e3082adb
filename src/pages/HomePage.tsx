@@ -14,7 +14,8 @@ import ContactSection from './HomePage/sections/Contact';
 
 
 import ProcessSection from './HomePage/sections/Process';
-import ComparisonSection from './HomePage/sections/Comparison';export default function HomePage(): React.JSX.Element {
+import ComparisonSection from './HomePage/sections/Comparison';
+import PartnersSection from './HomePage/sections/Partners';export default function HomePage(): React.JSX.Element {
   return (
 <StyleProvider siteBackground="none" heroBackground="none" buttonVariant="stagger">
         <SiteBackgroundSlot />
@@ -22,6 +23,7 @@ import ComparisonSection from './HomePage/sections/Comparison';export default fu
         
 
         <HeroSection />
+      <PartnersSection />
       <ProcessSection />
       <ComparisonSection />
 
