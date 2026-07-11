@@ -5,7 +5,6 @@
 // become component refs.
 
 import { StyleProvider } from "@/components/ui/StyleProvider";
-import SiteBackgroundSlot from "@/components/ui/SiteBackgroundSlot";
 import React from 'react';
 import HeroSection from './HomePage/sections/Hero';
 import AboutSection from './HomePage/sections/About';
@@ -14,13 +13,11 @@ import ContactSection from './HomePage/sections/Contact';
 
 
 import PartnersSection from './HomePage/sections/Partners';
-import ProcessSection from './HomePage/sections/Process';export default function HomePage(): React.JSX.Element {
+import ProcessSection from './HomePage/sections/Process';
+
+export default function HomePage(): React.JSX.Element {
   return (
 <StyleProvider siteBackground="none" heroBackground="none" buttonVariant="stagger">
-        <SiteBackgroundSlot />
-
-        
-
         <HeroSection />
       <ProcessSection />
 
