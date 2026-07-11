@@ -151,6 +151,12 @@ const HeroInline = () => {
         >
           <HeroBackgroundSlot />
         <video
+                ref={videoRef}
+                className="absolute inset-0 w-full h-full object-cover"
+                src="https://cdn.brandkonnect.com/roofing-bg.mp4"
+                muted
+                playsInline
+                preload="auto"
           ref={videoRef}
           src={"https://storage.googleapis.com/webild/default/templates/marbella/hero/hero.mp4"}
           muted
