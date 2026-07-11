@@ -7,6 +7,7 @@
 import { StyleProvider } from "@/components/ui/StyleProvider";
 import SiteBackgroundSlot from "@/components/ui/SiteBackgroundSlot";
 import React from 'react';
+import HeroSection from './HomePage/sections/Hero';
 import AboutSection from './HomePage/sections/About';
 import PropertiesSection from './HomePage/sections/Properties';
 import ContactSection from './HomePage/sections/Contact';
@@ -14,23 +15,25 @@ import ContactSection from './HomePage/sections/Contact';
 
 import ProcessSection from './HomePage/sections/Process';
 import ComparisonSection from './HomePage/sections/Comparison';
-import PartnersSection from './HomePage/sections/Partners';
-
-export default function HomePage(): React.JSX.Element {
+import PartnersSection from './HomePage/sections/Partners';export default function HomePage(): React.JSX.Element {
   return (
-    <StyleProvider siteBackground="none" heroBackground="none" buttonVariant="stagger">
-      <SiteBackgroundSlot />
+<StyleProvider siteBackground="none" heroBackground="none" buttonVariant="stagger">
+        <SiteBackgroundSlot />
 
+        
+
+        <HeroSection />
       <PartnersSection />
       <ProcessSection />
       <ComparisonSection />
 
-      <AboutSection />
+        <AboutSection />
 
-      <PropertiesSection />
+        <PropertiesSection />
 
-      <ContactSection />
+        <ContactSection />
 
-    </StyleProvider>
+        
+      </StyleProvider>
   );
 }
