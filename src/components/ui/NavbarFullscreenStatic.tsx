@@ -51,25 +51,7 @@ const NavbarFullscreenStatic = ({ logo, navItems, ctaButton }: NavbarFullscreenS
         </a>
 
         <div className="flex items-center gap-2 xl:gap-3 2xl:gap-4">
-          <Button text={ctaButton.text} href={ctaButton.href} variant="primary" animate={false} />
-
-          <div
-            className="relative flex items-center justify-center size-9 rounded cursor-pointer primary-button"
-            onClick={() => setMenuOpen(!menuOpen)}
-          >
-            <span
-              className={cls(
-                "absolute w-3 h-px bg-primary-cta-text transition-all duration-300",
-                menuOpen ? "rotate-45" : "-translate-y-1"
-              )}
-            />
-            <span
-              className={cls(
-                "absolute w-3 h-px bg-primary-cta-text transition-all duration-300",
-                menuOpen ? "-rotate-45" : "translate-y-1"
-              )}
-            />
-          </div>
+          {/* Buttons removed as requested */}
         </div>
       </div>
 
