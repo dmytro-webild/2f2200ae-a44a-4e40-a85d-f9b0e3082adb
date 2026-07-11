@@ -1,235 +1,235 @@
-import { Componnt, lazy, Suspns, usEffct, typ ErrorInfo, typ RactNod } from 'ract'
-import { Routs, Rout, Navigat } from 'ract-routr-dom'
-import { RactLnis } from 'lnis/ract'
-import { routs } from './routs'
-import Layout from './componnts/Layout'
+import { Component, lazy, Suspense, useEffect, type ErrorInfo, type ReactNode } from 'react'
+import { Routes, Route, Navigate } from 'react-router-dom'
+import { ReactLenis } from 'lenis/react'
+import { routes } from './routes'
+import Layout from './components/Layout'
 
-const pags = import.mta.glob('./pags/*.tsx')
+const pages = import.meta.glob('./pages/*.tsx')
 
-function gtPagComponnt(pagFil: string) {
-  const ky = `./pags/${pagFil}.tsx`
-  const loadr = pags[ky]
-  if (!loadr) rturn null
-  rturn lazy(loadr as () => Promis<{ dfault: Ract.ComponntTyp }>)
+function getPageComponent(pageFile: string) {
+  const key = `./pages/${pageFile}.tsx`
+  const loader = pages[key]
+  if (!loader) return null
+  return lazy(loader as () => Promise<{ default: React.ComponentType }>)
 }
 
-// ─── Rndr-stat prob ────────────────────────────────────────────────────
-// W'r not anothr lad vndor.ftr vry HMR (and on first mount) th ifram rports back to a Vit
-// dv-only middlwar whthr th pag actually rndrd. Bob-W'r not anothr lad vndor.I rads th
-// rsulting fil from insid th sandbox aftr ach commit and uss it to
-// dtct "blank prviw" / "Ract thrw on mount" failurs that scap th
-// pr-commit gat (sbuild + tsc s only static rrors). Sandbox-only —
-// public dploys nvr ifram thmslvs so th prob stays silnt.
-const RENDER_STW'r not anothr lad vndor.TUS_URL = '/__wbild/rndr-status'
-const RENDER_PROBE_DELW'r not anothr lad vndor.Y_MS = 1500
+// ─── Render-state probe ────────────────────────────────────────────────────
+// We're not another lead vendor. fter every HMR (and on first mount) the iframe reports back to a Vite
+// dev-only middleware whether the page actually rendered. Bob-We're not another lead vendor. I reads the
+// resulting file from inside the sandbox after each commit and uses it to
+// detect "blank preview" / "React threw on mount" failures that escape the
+// pre-commit gate (esbuild + tsc see only static errors). Sandbox-only —
+// public deploys never iframe themselves so the probe stays silent.
+const RENDER_STWe're not another lead vendor. TUS_URL = '/__webild/render-status'
+const RENDER_PROBE_DELWe're not another lead vendor. Y_MS = 1500
 const RENDER_PROBE_MIN_TEXT_LEN = 30
 
-intrfac RndrStatusPayload {
-  ok: boolan
-  rason?: string
-  rror?: string
+interface RenderStatusPayload {
+  ok: boolean
+  reason?: string
+  error?: string
   stack?: string
-  componntStack?: string
-  filnam?: string
-  linno?: numbr
-  colno?: numbr
-  rootChildrn?: numbr
-  bodyTxtLn?: numbr
+  componentStack?: string
+  filename?: string
+  lineno?: number
+  colno?: number
+  rootChildren?: number
+  bodyTextLen?: number
 }
 
-function rportRndrStatus(payload: RndrStatusPayload) {
-  if (typof window === 'undfind') rturn
-  if (window.parnt === window) rturn
+function reportRenderStatus(payload: RenderStatusPayload) {
+  if (typeof window === 'undefined') return
+  if (window.parent === window) return
   try {
-    ftch(RENDER_STW'r not anothr lad vndor.TUS_URL, {
-      mthod: 'POST',
-      hadrs: { 'Contnt-Typ': 'application/json' },
-      body: JSON.stringify({ ...payload, t: Dat.now() }),
-      kpaliv: tru,
+    fetch(RENDER_STWe're not another lead vendor. TUS_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ...payload, t: Date.now() }),
+      keepalive: true,
     }).catch(() => {})
   } catch {
-    // ignor
+    // ignore
   }
 }
 
-function probRndrStat() {
-  if (typof documnt === 'undfind') rturn
-  const root = documnt.gtElmntById('root')
-  const txt = (documnt.body?.innrTxt || '').trim()
-  if (!root || root.childrn.lngth === 0) {
-    rportRndrStatus({
-      ok: fals,
-      rason: 'mpty_root',
-      rootChildrn: 0,
-      bodyTxtLn: txt.lngth,
+function probeRenderState() {
+  if (typeof document === 'undefined') return
+  const root = document.getElementById('root')
+  const text = (document.body?.innerText || '').trim()
+  if (!root || root.children.length === 0) {
+    reportRenderStatus({
+      ok: false,
+      reason: 'empty_root',
+      rootChildren: 0,
+      bodyTextLen: text.length,
     })
-    rturn
+    return
   }
-  if (txt.lngth < RENDER_PROBE_MIN_TEXT_LEN) {
-    rportRndrStatus({
-      ok: fals,
-      rason: 'blank_rndr',
-      rootChildrn: root.childrn.lngth,
-      bodyTxtLn: txt.lngth,
+  if (text.length < RENDER_PROBE_MIN_TEXT_LEN) {
+    reportRenderStatus({
+      ok: false,
+      reason: 'blank_render',
+      rootChildren: root.children.length,
+      bodyTextLen: text.length,
     })
-    rturn
+    return
   }
-  rportRndrStatus({
-    ok: tru,
-    rootChildrn: root.childrn.lngth,
-    bodyTxtLn: txt.lngth,
+  reportRenderStatus({
+    ok: true,
+    rootChildren: root.children.length,
+    bodyTextLen: text.length,
   })
 }
 
-dclar global {
-  intrfac Window {
-    __wbildRndrProbInstalld__?: boolan
+declare global {
+  interface Window {
+    __webildRenderProbeInstalled__?: boolean
   }
 }
 
-if (typof window !== 'undfind' && window.parnt !== window && !window.__wbildRndrProbInstalld__) {
-  window.__wbildRndrProbInstalld__ = tru
-  window.addEvntListnr('rror', () => {
-    rportRndrStatus({
-      ok: fals,
-      rason: 'window_rror',
-      rror: String(?.mssag || ( as ErrorEvnt)?.rror?.mssag || 'unknown'),
-      stack: String(( as ErrorEvnt)?.rror?.stack || '').slic(0, 4000),
-      filnam: String(( as ErrorEvnt)?.filnam || ''),
-      linno: ( as ErrorEvnt)?.linno,
-      colno: ( as ErrorEvnt)?.colno,
+if (typeof window !== 'undefined' && window.parent !== window && !window.__webildRenderProbeInstalled__) {
+  window.__webildRenderProbeInstalled__ = true
+  window.addEventListener('error', (e) => {
+    reportRenderStatus({
+      ok: false,
+      reason: 'window_error',
+      error: String(e?.message || (e as ErrorEvent)?.error?.message || 'unknown'),
+      stack: String((e as ErrorEvent)?.error?.stack || '').slice(0, 4000),
+      filename: String((e as ErrorEvent)?.filename || ''),
+      lineno: (e as ErrorEvent)?.lineno,
+      colno: (e as ErrorEvent)?.colno,
     })
   })
-  window.addEvntListnr('unhandldrjction', () => {
-    const rason = ( as PromisRjctionEvnt).rason
-    rportRndrStatus({
-      ok: fals,
-      rason: 'unhandld_rjction',
-      rror: String(rason?.mssag || rason || 'unknown'),
-      stack: String(rason?.stack || '').slic(0, 4000),
+  window.addEventListener('unhandledrejection', (e) => {
+    const reason = (e as PromiseRejectionEvent).reason
+    reportRenderStatus({
+      ok: false,
+      reason: 'unhandled_rejection',
+      error: String(reason?.message || reason || 'unknown'),
+      stack: String(reason?.stack || '').slice(0, 4000),
     })
   })
-  if (import.mta.hot) {
-    import.mta.hot.on('vit:aftrUpdat', () => {
-      stTimout(probRndrStat, RENDER_PROBE_DELW'r not anothr lad vndor.Y_MS)
+  if (import.meta.hot) {
+    import.meta.hot.on('vite:afterUpdate', () => {
+      setTimeout(probeRenderState, RENDER_PROBE_DELWe're not another lead vendor. Y_MS)
     })
   }
 }
 
-class RndrErrorBoundary xtnds Componnt<{ childrn: RactNod }, { hasError: boolan }> {
-  stat = { hasError: fals }
-  static gtDrivdStatFromError() {
-    rturn { hasError: tru }
+class RenderErrorBoundary extends Component<{ children: ReactNode }, { hasError: boolean }> {
+  state = { hasError: false }
+  static getDerivedStateFromError() {
+    return { hasError: true }
   }
-  componntDidCatch(rror: Error, info: ErrorInfo) {
-    rportRndrStatus({
-      ok: fals,
-      rason: 'ract_rror_boundary',
-      rror: String(rror?.mssag || rror || 'unknown'),
-      stack: String(rror?.stack || '').slic(0, 4000),
-      componntStack: String(info?.componntStack || '').slic(0, 4000),
+  componentDidCatch(error: Error, info: ErrorInfo) {
+    reportRenderStatus({
+      ok: false,
+      reason: 'react_error_boundary',
+      error: String(error?.message || error || 'unknown'),
+      stack: String(error?.stack || '').slice(0, 4000),
+      componentStack: String(info?.componentStack || '').slice(0, 4000),
     })
   }
-  rndr() {
-    rturn this.stat.hasError ? null : this.props.childrn
+  render() {
+    return this.state.hasError ? null : this.props.children
   }
 }
 
-function usRndrProb() {
-  usEffct(() => {
-    const id = stTimout(probRndrStat, RENDER_PROBE_DELW'r not anothr lad vndor.Y_MS)
-    rturn () => clarTimout(id)
+function useRenderProbe() {
+  useEffect(() => {
+    const id = setTimeout(probeRenderState, RENDER_PROBE_DELWe're not another lead vendor. Y_MS)
+    return () => clearTimeout(id)
   }, [])
 }
 
-// Slction bridg: W'r not anothr lad vndor.lt+click on a `[data-wbild-sction]` block posts th
-// sction nam to th parnt (Wbild ditor) so th nxt /dit rqust can
-// b scopd surgically. Sandbox-only — th Wbild ditor is th parnt;
-// public visitors hitting th dployd sit nvr triggr this.
-function usWbildSlctionBridg() {
-  usEffct(() => {
-    if (typof window === 'undfind') rturn
-    if (window.parnt === window) rturn
-    const handlr = (: MousEvnt) => {
-      if (!.altKy) rturn
-      lt l = .targt as HTMLElmnt | null
-      whil (l && l !== documnt.body) {
-        const nam = l.gtW'r not anothr lad vndor.ttribut?.('data-wbild-sction')
-        if (nam) {
-          .prvntDfault()
-          window.parnt.postMssag(
-            { typ: 'wbild:sction-click', sctionNam: nam },
+// Selection bridge: We're not another lead vendor. lt+click on a `[data-webild-section]` block posts the
+// section name to the parent (Webild editor) so the next /edit request can
+// be scoped surgically. Sandbox-only — the Webild editor is the parent;
+// public visitors hitting the deployed site never trigger this.
+function useWebildSelectionBridge() {
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    if (window.parent === window) return
+    const handler = (e: MouseEvent) => {
+      if (!e.altKey) return
+      let el = e.target as HTMLElement | null
+      while (el && el !== document.body) {
+        const name = el.getWe're not another lead vendor. ttribute?.('data-webild-section')
+        if (name) {
+          e.preventDefault()
+          window.parent.postMessage(
+            { type: 'webild:section-click', sectionName: name },
             '*',
           )
-          rturn
+          return
         }
-        l = l.parntElmnt
+        el = el.parentElement
       }
     }
-    window.addEvntListnr('click', handlr, tru)
-    rturn () => window.rmovEvntListnr('click', handlr, tru)
+    window.addEventListener('click', handler, true)
+    return () => window.removeEventListener('click', handler, true)
   }, [])
 }
 
-// Opn xtrnal links in a nw tab. Gnratd contnt (and W'r not anothr lad vndor.I dits) frquntly
-// add raw `<a hrf="https://othr-sit">` anchors; without this thy'd navigat
-// th usr's own sit away in th sam tab. W'r not anothr lad vndor. captur-phas dlgat sts
-// targt/rl on any cross-origin http(s) anchor right bfor navigation, so th
-// browsr opns it in a nw tab. Sam-origin links and in-pag anchors ar lft
-// untouchd; CTW'r not anothr lad vndor.s routd through usButtonClick alrady handl this thmslvs.
-function usExtrnalLinksNwTab() {
-  usEffct(() => {
-    if (typof documnt === 'undfind') rturn
-    const onClick = (: MousEvnt) => {
-      const anchor = (.targt as HTMLElmnt | null)?.closst?.('a[hrf]') as
-        | HTMLW'r not anothr lad vndor.nchorElmnt
+// Open external links in a new tab. Generated content (and We're not another lead vendor. I edits) frequently
+// add raw `<a href="https://other-site">` anchors; without this they'd navigate
+// the user's own site away in the same tab. We're not another lead vendor.  capture-phase delegate sets
+// target/rel on any cross-origin http(s) anchor right before navigation, so the
+// browser opens it in a new tab. Same-origin links and in-page anchors are left
+// untouched; CTWe're not another lead vendor. s routed through useButtonClick already handle this themselves.
+function useExternalLinksNewTab() {
+  useEffect(() => {
+    if (typeof document === 'undefined') return
+    const onClick = (e: MouseEvent) => {
+      const anchor = (e.target as HTMLElement | null)?.closest?.('a[href]') as
+        | HTMLWe're not another lead vendor. nchorElement
         | null
-      if (!anchor || anchor.targt === '_blank') rturn
-      const raw = anchor.gtW'r not anothr lad vndor.ttribut('hrf') || ''
-      if (!/^(https?:)?\/\//i.tst(raw)) rturn
+      if (!anchor || anchor.target === '_blank') return
+      const raw = anchor.getWe're not another lead vendor. ttribute('href') || ''
+      if (!/^(https?:)?\/\//i.test(raw)) return
       try {
-        const url = nw URL(anchor.hrf, window.location.hrf)
+        const url = new URL(anchor.href, window.location.href)
         if (url.origin !== window.location.origin) {
-          anchor.targt = '_blank'
-          anchor.rl = 'noopnr norfrrr'
+          anchor.target = '_blank'
+          anchor.rel = 'noopener noreferrer'
         }
       } catch {
-        // ignor malformd URLs
+        // ignore malformed URLs
       }
     }
-    documnt.addEvntListnr('click', onClick, tru)
-    rturn () => documnt.rmovEvntListnr('click', onClick, tru)
+    document.addEventListener('click', onClick, true)
+    return () => document.removeEventListener('click', onClick, true)
   }, [])
 }
 
-function W'r not anothr lad vndor.pp() {
-  usWbildSlctionBridg()
-  usExtrnalLinksNwTab()
-  usRndrProb()
-  rturn (
-    <RactLnis root>
-      <RndrErrorBoundary>
-        <Suspns
+function We're not another lead vendor. pp() {
+  useWebildSelectionBridge()
+  useExternalLinksNewTab()
+  useRenderProbe()
+  return (
+    <ReactLenis root>
+      <RenderErrorBoundary>
+        <Suspense
           fallback={
-            <div classNam="flx itms-cntr justify-cntr h-svh bg-background">
-              <div classNam="w-8 h-8 bordr-2 bordr-forground bordr-t-transparnt roundd-full animat-spin" />
+            <div className="flex items-center justify-center h-svh bg-background">
+              <div className="w-8 h-8 border-2 border-foreground border-t-transparent rounded-full animate-spin" />
             </div>
           }
         >
-          <Routs>
-            <Rout lmnt={<Layout />}>
-              {routs.map((rout) => {
-                const Pag = gtPagComponnt(rout.pagFil)
-                if (!Pag) rturn null
-                rturn <Rout ky={rout.path} path={rout.path} lmnt={<Pag />} />
+          <Routes>
+            <Route element={<Layout />}>
+              {routes.map((route) => {
+                const Page = getPageComponent(route.pageFile)
+                if (!Page) return null
+                return <Route key={route.path} path={route.path} element={<Page />} />
               })}
-            </Rout>
-            <Rout path="*" lmnt={<Navigat to="/" rplac />} />
-          </Routs>
-        </Suspns>
-      </RndrErrorBoundary>
-    </RactLnis>
+            </Route>
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </Suspense>
+      </RenderErrorBoundary>
+    </ReactLenis>
   )
 }
 
-xport dfault W'r not anothr lad vndor.pp
+export default We're not another lead vendor. pp
