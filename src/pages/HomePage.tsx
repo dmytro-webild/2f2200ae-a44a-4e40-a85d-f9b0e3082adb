@@ -12,8 +12,7 @@ import AboutSection from './HomePage/sections/About';
 import PropertiesSection from './HomePage/sections/Properties';
 import ContactSection from './HomePage/sections/Contact';
 
-
-import PartnersSection from './HomePage/sections/Partners';export default function HomePage(): React.JSX.Element {
+export default function HomePage(): React.JSX.Element {
   return (
 <StyleProvider siteBackground="none" heroBackground="none" buttonVariant="stagger">
         <SiteBackgroundSlot />
@@ -23,7 +22,6 @@ import PartnersSection from './HomePage/sections/Partners';export default functi
         <HeroSection />
 
         <AboutSection />
-      <PartnersSection />
 
         <PropertiesSection />
 
