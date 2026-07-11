@@ -12,7 +12,7 @@ export default function HeroSection(): React.JSX.Element {
                 videoSrc="https://storage.googleapis.com/webild/default/templates/marbella/hero/hero.mp4"
                 tag="Exclusive To Your Area"
                 title="#1 Growth Partner For Roofers"
-                description="We're not another lead vendor."
+                description="Everything before the handshake is ours. The handshake is yours."
                 primaryButton={{ text: "View  Our Process", href: "#process" }}
                 secondaryButton={{ text: "See if You Qualify", href: "#contact" }}
                 bottomText="You pay when they show. Not before."
