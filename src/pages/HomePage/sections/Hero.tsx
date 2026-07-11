@@ -13,8 +13,8 @@ export default function HeroSection(): React.JSX.Element {
                 tag="Exclusive To Your Area"
                 title="#1 Growth Partners For Roofers"
                 description="Exclusive homeowner appointments for established Roofing Contractors around the U.S"
-                primaryButton={{ text: "View Process", href: "#properties" }}
-                secondaryButton={{ text: "Schedule A Call", href: "#contact" }}
+                primaryButton={{ text: "View  Our Process", href: "#properties" }}
+                secondaryButton={{ text: "See if You Qualify", href: "#contact" }}
                 bottomText="brand Konnect is designed for those seeking a unique/High Quality way To Acquire Roofing Jobs"
               />
             </div>
