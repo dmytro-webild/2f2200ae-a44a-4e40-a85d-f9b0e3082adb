@@ -9,7 +9,7 @@ export default function ContactSection(): React.JSX.Element {
     <div id="contact" data-section="contact">
               <ContactParallaxCard
                 title="Get In Touch"
-                imageSrc="https://storage.googleapis.com/webild/users/user_3GMBzqNQha0Ss5sANYDh3wTgZ9J/uploaded-1783784033944-okrzrj5u.png"
+                imageSrc="https://storage.googleapis.com/webild/users/user_3GMBzqNQha0Ss5sANYDh3wTgZ9J/uploaded-1783784141401-9gxrwqps.jpg"
                 inputs={[
                   { name: "name", type: "text", placeholder: "Your name" },
                   { name: "email", type: "email", placeholder: "Your email" },
