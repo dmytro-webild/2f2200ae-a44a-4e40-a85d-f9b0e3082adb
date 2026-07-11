@@ -9,7 +9,7 @@ import SiteBackgroundSlot from "@/components/ui/SiteBackgroundSlot";
 import React from 'react';
 import HeroSection from './HomePage/sections/Hero';
 import AboutSection from './HomePage/sections/About';
-import About UsSection from './HomePage/sections/About Us';
+import PropertiesSection from './HomePage/sections/Properties';
 import ContactSection from './HomePage/sections/Contact';
 
 
@@ -25,7 +25,7 @@ import ProcessSection from './HomePage/sections/Process';export default function
 
         <AboutSection />
 
-        <About UsSection />
+        <PropertiesSection />
 
         <ContactSection />
 
