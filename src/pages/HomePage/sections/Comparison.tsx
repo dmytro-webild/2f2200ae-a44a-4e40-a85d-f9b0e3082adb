@@ -6,23 +6,23 @@ export default function ComparisonSection() {
   const rows = [
     {
       old: "Shared leads sold to 4–5 roofers at once",
-      new: "One roofer per market — never shared, never resold"
+      new: "One roofer per market, never shared, never resold"
     },
     {
       old: "You bid against every other roofer in town",
-      new: "Homeowners chose you before they booked — no bidding wars"
+      new: "Homeowners chose you before they booked, no bidding wars"
     },
     {
-      old: "Monthly retainer — you pay whether it works or not",
-      new: "Pay only when a homeowner shows up — zero retainer"
+      old: "Monthly retainer, you pay whether it works or not",
+      new: "Pay only when a homeowner shows up, zero retainer"
     },
     {
       old: "You chase, call, and qualify every lead yourself",
       new: "Every appointment qualified and booked to your calendar"
     },
     {
-      old: "Tire-kickers and price-shoppers, no filtering",
-      new: "Serious homeowners ready to invest — pre-sold on you"
+      old: "Tire-kickers and price shoppers, no filtering",
+      new: "Serious homeowners ready to invest, pre-sold on you"
     }
   ];
 
