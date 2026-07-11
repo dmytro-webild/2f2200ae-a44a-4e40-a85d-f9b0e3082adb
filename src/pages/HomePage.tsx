@@ -18,22 +18,19 @@ import PartnersSection from './HomePage/sections/Partners';
 
 export default function HomePage(): React.JSX.Element {
   return (
-<StyleProvider siteBackground="none" heroBackground="none" buttonVariant="stagger">
-        <SiteBackgroundSlot />
-
-        
+    <StyleProvider siteBackground="none" heroBackground="none" buttonVariant="stagger">
+      <SiteBackgroundSlot />
 
       <PartnersSection />
       <ProcessSection />
       <ComparisonSection />
 
-        <AboutSection />
+      <AboutSection />
 
-        <PropertiesSection />
+      <PropertiesSection />
 
-        <ContactSection />
+      <ContactSection />
 
-        
-      </StyleProvider>
+    </StyleProvider>
   );
 }
