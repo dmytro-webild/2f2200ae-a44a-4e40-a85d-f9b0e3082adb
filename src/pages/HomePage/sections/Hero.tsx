@@ -155,7 +155,7 @@ const HeroInline = () => {
           src={"https://storage.googleapis.com/webild/default/templates/marbella/hero/hero.mp4"}
           muted
           playsInline
-          autoPlay={false}
+          autoPlay
           preload="auto"
           className="absolute inset-0 w-full h-full object-cover"
         />
