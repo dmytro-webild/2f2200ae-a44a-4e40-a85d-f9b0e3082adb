@@ -10,12 +10,12 @@ export default function HeroSection(): React.JSX.Element {
               <HeroVideoScroll
                 textAnimation="fade"
                 videoSrc="https://storage.googleapis.com/webild/default/templates/marbella/hero/hero.mp4"
-                tag="Le Cercle Premium Real Estate"
-                title="Live Where the Sun Meets the Sea"
-                description="Exclusive beachfront villas and luxury apartments on the Costa del Sol. Your Mediterranean dream, delivered turnkey."
-                primaryButton={{ text: "View Properties", href: "#properties" }}
-                secondaryButton={{ text: "Book a Tour", href: "#contact" }}
-                bottomText="A premium real estate brand designed for those seeking a refined way of living on the Costa del Sol"
+                tag="Exclusive To Your Area"
+                title="#1 Growth Partners For Roofers"
+                description="Exclusive homeowner appointments for established Roofing Contractors around the U.S"
+                primaryButton={{ text: "View Process", href: "#properties" }}
+                secondaryButton={{ text: "Schedule A Call", href: "#contact" }}
+                bottomText="brand Konnect is designed for those seeking a unique/High Quality way To Acquire Roofing Jobs"
               />
             </div>
   );
