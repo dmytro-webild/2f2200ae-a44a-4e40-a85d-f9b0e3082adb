@@ -17,48 +17,19 @@ export default function Layout() {
       <main className="flex-grow">
         <Outlet />
       </main>
-      <FooterBasic
-                columns={[
-                  {
-                    title: "Properties",
-                    items: [
-                      { label: "Villas", href: "#properties" },
-                      { label: "Apartments", href: "#" },
-                      { label: "Penthouses", href: "#" },
-                      { label: "New Developments", href: "#" },
-                    ],
-                  },
-                  {
-                    title: "Services",
-                    items: [
-                      { label: "Property Search", href: "#" },
-                      { label: "Legal Assistance", href: "#" },
-                      { label: "Interior Design", href: "#" },
-                      { label: "Property Management", href: "#" },
-                    ],
-                  },
-                  {
-                    title: "Locations",
-                    items: [
-                      { label: "Golden Mile", href: "#" },
-                      { label: "Puerto Banús", href: "#" },
-                      { label: "Sierra Blanca", href: "#" },
-                      { label: "La Zagaleta", href: "#" },
-                    ],
-                  },
-                  {
-                    title: "Company",
-                    items: [
-                      { label: "About Us", href: "#" },
-                      { label: "Contact", href: "#contact" },
-                      { label: "Privacy Policy", href: "#" },
-                      { label: "Terms of Service", href: "#" },
-                    ],
-                  },
-                ]}
-                leftText="© 2026 Brand Konnect. All rights reserved."
-                rightText="Marbella, Costa del Sol"
-              />
+      <footer className="w-full py-24 bg-background">
+        <div className="w-content-width mx-auto flex flex-col items-center justify-center text-center gap-8">
+          <h2 className="text-3xl md:text-4xl font-serif text-foreground">Follow Us & See What We Are Building</h2>
+          <div className="flex items-center gap-6">
+            <a href="https://www.instagram.com/teambrandkonnect" target="_blank" rel="noopener noreferrer" className="text-lg text-accent hover:text-foreground transition-colors">
+              Instagram
+            </a>
+            <a href="https://www.youtube.com/@Brand-Konnect" target="_blank" rel="noopener noreferrer" className="text-lg text-accent hover:text-foreground transition-colors">
+              YouTube
+            </a>
+          </div>
+        </div>
+      </footer>
     </StyleProvider>
   );
 }
