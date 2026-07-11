@@ -150,7 +150,7 @@ const HeroInline = () => {
           className="sticky top-0 overflow-hidden flex flex-col justify-between w-full h-svh"
         >
           <HeroBackgroundSlot />
-        <video
+        <video playsInline
           ref={videoRef}
           src={"https://storage.googleapis.com/webild/default/templates/marbella/hero/hero.mp4"}
           muted
