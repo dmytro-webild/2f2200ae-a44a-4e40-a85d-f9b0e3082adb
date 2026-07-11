@@ -11,12 +11,8 @@ export default function Layout() {
       <SiteBackgroundSlot />
       <NavbarFullscreenStatic
                 logo="Brand Konnect"
-                navItems={[
-                  { name: "Properties", href: "#properties" },
-                  { name: "About", href: "#about" },
-                  { name: "Contact", href: "#contact" },
-                ]}
-                ctaButton={{ text: "Book a Tour", href: "#contact" }}
+                navItems={[]}
+                ctaButton={{ text: "", href: "" }}
               />
       <main className="flex-grow">
         <Outlet />
