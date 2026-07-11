@@ -9,7 +9,7 @@ import SiteBackgroundSlot from "@/components/ui/SiteBackgroundSlot";
 import React from 'react';
 import HeroSection from './HomePage/sections/Hero';
 import AboutSection from './HomePage/sections/About';
-import PropertiesSection from './HomePage/sections/Properties';
+import About UsSection from './HomePage/sections/About Us';
 import ContactSection from './HomePage/sections/Contact';
 
 
@@ -29,7 +29,7 @@ export default function HomePage(): React.JSX.Element {
 
         <AboutSection />
 
-        <PropertiesSection />
+        <About UsSection />
 
         <ContactSection />
 
