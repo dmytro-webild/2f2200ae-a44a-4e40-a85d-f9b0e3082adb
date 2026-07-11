@@ -12,7 +12,7 @@ export default function AboutSection(): React.JSX.Element {
         description="Elevating roofing businesses with strategic growth partnerships, tailored marketing, and operational excellence."
         imageSrc=""
         primaryButton={{ text: "Book a Call", href: "#contact" }}
-        secondaryButton={{ text: "Our Services", href: "#services" }}
+        secondaryButton={{ text: "Brand Konnect", href: "#services" }}
         textAnimation="fade-blur"
       />
     </div>
