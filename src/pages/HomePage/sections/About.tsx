@@ -9,7 +9,7 @@ export default function AboutSection(): React.JSX.Element {
       <HeroBillboard
         tag="A"
         title="Exclusive homeowner appointments for established Roofing Contractors around the U.S"
-        description="Elevating roofing businesses with strategic growth partnerships, tailored marketing, and operational excellence."
+        description="Elevating roofing business today. No chasing, no cold leads. Just homeowners ready to talk, on your calendar."
         imageSrc=""
         primaryButton={{ text: "Book a Call", href: "#contact" }}
         secondaryButton={{ text: "Brand Konnect", href: "#services" }}
