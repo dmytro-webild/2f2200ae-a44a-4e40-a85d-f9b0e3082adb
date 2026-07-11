@@ -10,7 +10,7 @@ export default function Layout() {
     <StyleProvider buttonVariant="default" siteBackground="none" heroBackground="none">
       <SiteBackgroundSlot />
       <NavbarFullscreenStatic
-                logo="Brand Konnect"
+                logo="Le Cercle"
                 navItems={[
                   { name: "Properties", href: "#properties" },
                   { name: "About", href: "#about" },
@@ -60,7 +60,7 @@ export default function Layout() {
                     ],
                   },
                 ]}
-                leftText="© 2026 Brand Konnect. All rights reserved."
+                leftText="© 2026 Le Cercle. All rights reserved."
                 rightText="Marbella, Costa del Sol"
               />
     </StyleProvider>
