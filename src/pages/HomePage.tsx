@@ -15,13 +15,13 @@ export default function HomePage() {
         <div id="hero" data-section="hero">
           <HeroVideoScroll
             textAnimation="fade"
-            videoSrc="https://storage.googleapis.com/webild/default/templates/marbella/hero/hero.mp4"
-            tag="Le Cercle Premium Real Estate"
-            title="Live Where the Sun Meets the Sea"
-            description="Exclusive beachfront villas and luxury apartments on the Costa del Sol. Your Mediterranean dream, delivered turnkey."
-            primaryButton={{ text: "View Properties", href: "#properties" }}
-            secondaryButton={{ text: "Book a Tour", href: "#contact" }}
-            bottomText="A premium real estate brand designed for those seeking a refined way of living on the Costa del Sol"
+            videoSrc="https://storage.googleapis.com/webild/default/templates/construction/hero.mp4"
+            tag="US Roofing Marketing Experts"
+            title="Dominate Your Local Roofing Market"
+            description="We partner with USA roofing contractors to build predictable, scalable lead generation systems that drive real revenue growth."
+            primaryButton={{ text: "Book a Strategy Call", href: "#contact" }}
+            secondaryButton={{ text: "See Our Results", href: "#results" }}
+            bottomText="Exclusive marketing partners for top-tier roofing contractors across the United States."
           />
         </div>
 
